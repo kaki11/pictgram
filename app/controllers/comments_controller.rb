@@ -1,17 +1,21 @@
 class CommentsController < ApplicationController
   def new
+    @comment = Comment.new
   end
 
   def create
-    comment = Comment.new
-    comment.user_id = current_user.id
-    comment.topic_id = params[:topic_id]
-
-    if comment.save
-      redirect_to topics_path, success: 'お気に入りに登録しました'
+    @comment = current_user.comments.new(comment_params)
+    @comment.topic_id = comment_params[:topic_id]
+    if @comment.save
+      redirect_to topics_path, success: 'コメントに成功しました'
     else
-      redirect_to topics_path, danger: 'お気に入りに登録に失敗しました'
+      flash.now[:danger] = "コメントに失敗しました"
+      render :new
     end
   end
 
+  private
+  def comment_params
+    params.require(:comment).permit(:comment, :topic_id)
+  end
 end
