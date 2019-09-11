@@ -12,7 +12,7 @@
               <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
                 <%= fa_icon"heart-o 2x", class: 'topic-index-icon' %>
               <% end %>
-                <% else %>
+            <% else %>
               <%= link_to favorites_path(topic_id: topic.id), method: :delete do %>
                 <%= fa_icon"heart 2x", class: 'topic-index-icon heart' %>
               <% end %>
