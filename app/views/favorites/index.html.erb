@@ -10,11 +10,11 @@
             <%= image_tag topic.image.url %>
             <% if !topic.favorite_users.include?(current_user) %>
               <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
-                <%= fa_icon"heart-o 2x", class: 'topic-index-icon' %>
+                <%= fa_icon "heart-o 2x", class: 'topic-index-icon' %>
               <% end %>
             <% else %>
               <%= link_to favorites_path(topic_id: topic.id), method: :delete do %>
-                <%= fa_icon"heart 2x", class: 'topic-index-icon heart' %>
+                <%= fa_icon "heart 2x", class: 'topic-index-icon heart' %>
               <% end %>
             <% end %>
             <%= topic.favorite_users.count %>
