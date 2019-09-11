@@ -19,6 +19,11 @@
           <span><%= image_tag "icons/logo.png", class: "navbar-brand" %></span>
         <% end %>
         <ul class="nav navbar-nav navbar-right">
+          <li>
+            <%= link_to topics_path do %>
+              <%= fa_icon "home 3x" %>
+            <% end %>
+          </li>
           <% if logged_in? %>
             <li>
               <%= link_to favorites_index_path do %>
